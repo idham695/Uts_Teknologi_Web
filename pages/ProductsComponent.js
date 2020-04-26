@@ -1,6 +1,7 @@
 const ProductsComponent = {
                 data(){
                     return{
+                        keyword: '',
                         products : []
                     }
                 },
@@ -17,20 +18,28 @@ const ProductsComponent = {
                 mounted: function(){
                     this.loadData()
                 },
+                computed: {
+                    filterProducts(){
+                        return this.products.filter((product) => {
+                            return product.name.includes(this.keyword)
+                        })
+                    }
+                },
                 template:  `<div class="product">
+                                <input type="text" class="form-control" v-model="keyword" placeholder="Masukan kata kunci">
                                 <div class="row">
-                                    <div class="col-md-4" v-for="product in products">
+                                    <div class="col-md-4" v-for="(product, index) of filterProducts" :key="index">
                                         <div class="card products">
                                             <div class="card-body">
                                             <img :src="'img/' + product.image" class="card-img-top image" alt="...">
                                             <h5 class="card-title">{{ product.name }}</h5>
-                                            <p class="card-text"{{ product.price }}</p>
+                                            <p class="card-text">{{ product.price }}</p>
                                             <router-link class="btn btn-primary" :to="'/products/'+product.id">Detail {{ product.name }}</router-link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>`
+                            </div>`,
 }
 
 export default ProductsComponent;
