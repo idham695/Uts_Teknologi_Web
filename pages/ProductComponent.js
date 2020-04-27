@@ -20,8 +20,8 @@ const ProductComponent = {
         template:  `<div class="product" v-if="products">
                         <div class="col-md-6" v-for="product in products">
                             <div class="card products">
+                            <img :src="'img/' + product.image" class="card-img-top image" alt="...">
                                 <div class="card-body">
-                                <img :src="'img/' + product.image" class="card-img-top image" alt="...">
                                 <h5 class="card-title">{{ product.name }}</h5>
                                 <p class="card-text"> {{ product.price }}</p>
                                 <p class="card-text"> {{ product.description }}</p>
