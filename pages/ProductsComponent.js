@@ -26,7 +26,7 @@ const ProductsComponent = {
                     }
                 },
                 template:  `<div class="product">
-                                <input type="text" class="form-control" v-model="keyword" placeholder="Masukan kata kunci">
+                                <input type="text" class="form-control input" v-model="keyword" placeholder="Masukan kata kunci">
                                 <div class="row">
                                     <div class="col-md-4" v-for="(product, index) of filterProducts" :key="index">
                                         <div class="card products">
