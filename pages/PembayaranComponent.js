@@ -6,6 +6,7 @@ const PembayaranComponent = {
                         harga: '',
                         jumlah: 0,
                         total: 0,
+                        errors: []
                     }
                 },
                 methods: {
@@ -23,13 +24,13 @@ const PembayaranComponent = {
                     submitForm(event){
                         this.errors = []
                         // Validasi
-                        if(this.nama.length < 3){
-                            this.errors.push("nama minimal 3 karakter")
-                            this.$refs.merk.select()                
+                        if(this.nama.length === 0){
+                            this.errors.push("Pilihlah minimal 1 nama")
+                            this.$refs.nama.focus()                
                         }
-                        if(this.harga < 0){
-                            this.errors.push("Harga tidak boleh minus")
-                            this.$refs.harga.select()                
+                        if(this.harga.length === 0){
+                            this.errors.push("Pilihlah minimal 1 harga")
+                            this.$refs.harga.focus()                
                         }
                         if(this.jumlah < 0){
                             this.errors.push("Jumlah tidak boleh minus")
@@ -54,7 +55,7 @@ const PembayaranComponent = {
                                     console.log(this.responseText)
                                 }
                             }
-                            xhttp.open("POST", "http://localhost:5000/proses.php", true)
+                            xhttp.open("POST", "http://localhost/proses.php", true)
         
         
                             xhttp.send(formData)
@@ -68,12 +69,20 @@ const PembayaranComponent = {
                                 <div class="product" v-if="products">
                                     <h1 class="header">Form Simulasi Pembayaran</h1>
                                     <form action="" ref="formProduct" @submit.prevent="submitForm($event)" method="POST" id="myForm">
+                                    <p v-if="errors.length">
+                                        <div class="alert alert-danger mt-1" v-for="error in errors">
+                                            {{error}}
+                                        </div>
+                                    </p>
                                         <div class="row" v-for="product in products">
                                             <div class="col-md-10">
                                                 <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Nama</label>
-                                                            <input type="text" class="form-control" v-model.trim="nama" :placeholder="product.name" ref="nama"/>
+                                                            <select class="form-control"  v-model="nama">
+                                                                <option disabled>Please select one</option>
+                                                                <option v-for="product in products" :value="product.name">{{product.name}}</option>
+                                                            </select>
                                                         </div>
                                                 </div>
                                             </div>
@@ -81,7 +90,10 @@ const PembayaranComponent = {
                                                 <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Harga</label>
-                                                            <input type="number" class="form-control" v-model.number="harga" :placeholder="product.price">
+                                                            <select class="form-control"  v-model="harga">
+                                                                <option disabled>Please select one</option>
+                                                                <option v-for="product in products" :value="product.price">{{product.price}}</option>
+                                                            </select>
                                                         </div>
                                                 </div>
                                             </div>
@@ -97,12 +109,12 @@ const PembayaranComponent = {
                                                 <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Total</label>
-                                                            <input type="number" class="form-control" v-model.number="total" v-bind="hasil()" readonly>
+                                                            <input type="number" class="form-control" v-model.number="total" readonly>
                                                         </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Proses Pembayaran</button>
+                                        <button class="btn btn-primary" type="submit" v-on:click="hasil()">Proses Pembayaran</button>
                                     </form>
                                 </div>
                             </div>`,}
