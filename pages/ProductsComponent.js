@@ -21,7 +21,7 @@ const ProductsComponent = {
                 computed: {
                     filterProducts(){
                         return this.products.filter((product) => {
-                            return product.name.includes(this.keyword)
+                            return product.name.toLowerCase().includes(this.keyword.toLowerCase())
                         })
                     }
                 },

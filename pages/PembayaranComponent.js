@@ -80,7 +80,6 @@ const PembayaranComponent = {
                                                         <div class="form-group">
                                                             <label>Nama</label>
                                                             <select class="form-control"  v-model="nama">
-                                                                <option disabled>Please select one</option>
                                                                 <option v-for="product in products" :value="product.name">{{product.name}}</option>
                                                             </select>
                                                         </div>
@@ -91,7 +90,6 @@ const PembayaranComponent = {
                                                         <div class="form-group">
                                                             <label>Harga</label>
                                                             <select class="form-control"  v-model="harga">
-                                                                <option disabled>Please select one</option>
                                                                 <option v-for="product in products" :value="product.price">{{product.price}}</option>
                                                             </select>
                                                         </div>
