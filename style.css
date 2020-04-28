@@ -1,15 +1,15 @@
 .product{
-    margin: 20px;
+    margin-left: 20px;
+    margin-top: 60px;
 }
 .image{
     width: 100%;
-    height: 150px;
+    height: 300px;
 }
 .collection{
     width: 100%;
     height: 200px;
 }
-
 .products{
     margin: 20px;
 }
@@ -18,5 +18,41 @@
     margin-top: 70px;
 }
 .card{
-    margin-top: 23px;
+    margin-top: 20px;
+}
+.jumbotron{
+    background-image: url('img/doom.jpg');
+    height: 400px;
+    background-size: cover;
+    position: relative;
+    margin-top: 50px;
+}
+.jumbotron .container{
+    position: relative;
+    z-index: 1;
+}
+.display-4{
+    text-align: center;
+    font-size: 32px;
+    color: white;
+    margin-top: 100px;
+    font-weight: 700;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+}
+.lead{
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    margin-top: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+}
+.jumbotron::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+    position: absolute;
+    bottom: 0;
 }

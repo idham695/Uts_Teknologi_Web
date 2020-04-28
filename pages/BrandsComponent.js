@@ -18,14 +18,16 @@ methods: {
 mounted: function(){
     this.loadData()
 },
-template:  `<div class="product">
-                <div class="row">
-                    <div class="col-lg-8" v-for="brand in brands" >
-                        <div class="card brands">
-                        <img :src="'img/' + brand.image" class="card-img-top image" alt="...">              
-                            <div class="card-body">           
-                            <h5 class="card-title">{{ brand.name }}</h5>
-                            <router-link class="btn btn-primary" :to="'/brands/'+brand.id">Info</router-link>                   
+template:  `<div class="container">
+                <div class="product">
+                    <div class="row">
+                        <div class="col-lg-8" v-for="brand in brands" >
+                            <div class="card brands">
+                            <img :src="'img/' + brand.image" class="card-img-top image" alt="...">              
+                                <div class="card-body">           
+                                <h5 class="card-title">{{ brand.name }}</h5>
+                                <router-link class="btn btn-primary" :to="'/brands/'+brand.id">Info</router-link>                   
+                                </div>
                             </div>
                         </div>
                     </div>
