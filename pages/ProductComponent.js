@@ -25,7 +25,7 @@ const ProductComponent = {
                                 <h5 class="card-title">{{ product.name }}</h5>
                                 <p class="card-text"> {{ product.price }}</p>
                                 <p class="card-text"> {{ product.description }}</p>
-                                <router-link class="btn btn-primary" :to="'/pembayaran/' + product.id">Pembayaran</router-link>
+                                <router-link class="btn btn-primary" :to="'/pembayaran/' + product.id">Simulasi Pembayaran</router-link>
                                 </div>
                             </div>
                         </div>

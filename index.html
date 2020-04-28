@@ -18,7 +18,7 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                  <router-link class="nav-link" to="/brand">Brand</router-link> 
+                  <router-link class="nav-link" to="/brands">Brand</router-link> 
                   <router-link class="nav-link" to="/blogs">Blog</router-link> 
                   <router-link class="nav-link" to="/products">Collection</router-link> 
                 </div>
@@ -52,13 +52,13 @@
 
         const routes = [
           {path: '/', component:HomeComponent},
-          {path: '/brand', component: BrandsComponent},
-          {path: '/brand/:id', component: BrandComponent},
+          {path: '/brands', component: BrandsComponent},
+          {path: '/brands/:id', component: BrandComponent},
           {path: '/blogs', component: BlogsComponent},
           {path: '/blogs/:id', component: BlogComponent},
           {path: '/products', component: ProductsComponent},
           {path: '/products/:id', component: ProductComponent},
-          {path: '/pembayaran', component: PembayaranComponent},
+          {path: '/pembayaran/:id', component: PembayaranComponent},
         ]
         const router = new VueRouter({
           routes
