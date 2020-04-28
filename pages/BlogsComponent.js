@@ -21,9 +21,9 @@ mounted: function(){
 template:  `<div class="container">
                 <div class="product">
                     <div class="row">
-                        <div class="col-lg-8" v-for="blog in blogs" >
+                        <div class="col-lg-6" v-for="blog in blogs" >
                             <div class="card blogs">
-                            <img :src="'img/' + blog.image" class="card-img-top image" alt="...">              
+                            <img :src="'img/' + blog.image" class="card-img-top collection" alt="...">              
                                 <div class="card-body">           
                                 <h5 class="card-title">{{ blog.title }}</h5>
                                 <p class="card-title">{{ blog.description }}</p>

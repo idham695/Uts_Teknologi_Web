@@ -5,7 +5,7 @@ const PembayaranComponent = {
                         nama: '',
                         harga: '',
                         jumlah: 0,
-                        total: 0,
+                        total: '',
                         errors: []
                     }
                 },
@@ -24,13 +24,13 @@ const PembayaranComponent = {
                     submitForm(event){
                         this.errors = []
                         // Validasi
-                        if(this.nama.length === 0){
-                            this.errors.push("Pilihlah minimal 1 nama")
-                            this.$refs.nama.focus()                
+                        if(this.nama.length < 3){
+                            this.errors.push("Nama minimal 3 karakter")
+                            this.$refs.nama.select()                
                         }
-                        if(this.harga.length === 0){
-                            this.errors.push("Pilihlah minimal 1 harga")
-                            this.$refs.harga.focus()                
+                        if(this.harga < 0){
+                            this.errors.push("harga tidak boleh minus")
+                            this.$refs.harga.select()                
                         }
                         if(this.jumlah < 0){
                             this.errors.push("Jumlah tidak boleh minus")
@@ -68,52 +68,43 @@ const PembayaranComponent = {
                 template:  `<div class="container">
                                 <div class="product" v-if="products">
                                     <h1 class="header">Form Simulasi Pembayaran</h1>
-                                    <form action="" ref="formProduct" @submit.prevent="submitForm($event)" method="POST" id="myForm">
-                                    <p v-if="errors.length">
-                                        <div class="alert alert-danger mt-1" v-for="error in errors">
-                                            {{error}}
+                                    <div class="row">
+                                        <div class="col-md-6" v-for="product in products">
+                                            <img :src="'img/' + product.image" class="image-payment" alt="...">
                                         </div>
-                                    </p>
-                                        <div class="row" v-for="product in products">
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                        <div class="form-group">
-                                                            <label>Nama</label>
-                                                            <select class="form-control"  v-model="nama">
-                                                                <option v-for="product in products" :value="product.name">{{product.name}}</option>
-                                                            </select>
-                                                        </div>
+                                        <div class="col-md-6" v-for="product in products">
+                                            <form action="" ref="formProduct" @submit.prevent="submitForm($event)" method="POST" id="myForm">
+                                            <p v-if="errors.length">
+                                                <div class="alert alert-danger mt-1" v-for="error in errors">
+                                                    {{error}}
                                                 </div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                        <div class="form-group">
-                                                            <label>Harga</label>
-                                                            <select class="form-control"  v-model="harga">
-                                                                <option v-for="product in products" :value="product.price">{{product.price}}</option>
-                                                            </select>
-                                                        </div>
+                                            </p>
+                                                <div v-for="product in products">
+                                                    <div class="form-group">
+                                                        <label>Nama Produk</label>
+                                                        <select class="form-control" v-model="nama">
+                                                        <option v-for="product in products" :value="product.name">{{product.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Harga Produk</label>
+                                                        <select class="form-control"  v-model="harga">
+                                                        <option v-for="product in products" :value="product.price">{{product.price}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Jumlah produk yang ingin di beli</label>
+                                                        <input type="number" class="form-control" v-model.number="jumlah" placeholder="masukan jumlah barang yang ingin di beli">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Total Bayar</label>
+                                                        <input type="number" class="form-control" v-model.number="total" readonly>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                        <div class="form-group">
-                                                            <label>Jumlah Produk</label>
-                                                            <input type="number" class="form-control" v-model.number="jumlah" placeholder="masukan jumlah barang yang ingin di beli">
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                        <div class="form-group">
-                                                            <label>Total</label>
-                                                            <input type="number" class="form-control" v-model.number="total" readonly>
-                                                        </div>
-                                                </div>
-                                            </div>
+                                                <button class="btn btn-primary" type="submit" v-on:click="hasil()">Bayar</button>
+                                            </form> 
                                         </div>
-                                        <button class="btn btn-primary" type="submit" v-on:click="hasil()">Proses Pembayaran</button>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>`,}
                     

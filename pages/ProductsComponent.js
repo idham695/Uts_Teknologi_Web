@@ -31,7 +31,7 @@ const ProductsComponent = {
                                     <div class="row">
                                         <div class="col-md-4" v-for="(product, index) of filterProducts" :key="index">
                                             <div class="card products">
-                                            <img :src="'img/' + product.image" class="card-img-top collection" alt="...">
+                                            <img :src="'img/' + product.image" class="card-img-top product-image" alt="...">
                                                 <div class="card-body">
                                                 <h5 class="card-title">{{ product.name }}</h5>
                                                 <p class="card-text">Rp.{{ product.price }}</p>

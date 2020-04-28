@@ -48,6 +48,7 @@
         import BlogsComponent from './pages/BlogsComponent.js';
         import BlogComponent from './pages/BlogComponent.js';
         import PembayaranComponent from './pages/PembayaranComponent.js';
+       
 
         const routes = [
           {path: '/', component:HomeComponent},
@@ -57,7 +58,8 @@
           {path: '/blogs/:id', component: BlogComponent},
           {path: '/products', component: ProductsComponent},
           {path: '/products/:id', component: ProductComponent},
-          {path: '/pembayaran/:id', component: PembayaranComponent},
+          {path: '/pembayaran/:id', component: PembayaranComponent},  
+           
         ]
         const router = new VueRouter({
           routes

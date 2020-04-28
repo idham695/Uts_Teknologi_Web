@@ -19,7 +19,7 @@ mounted: function(){
 },
 template:  `<div class="container">
                 <div class="product" v-if="blogs">
-                    <div class="col-md-8" v-for="blog in blogs">
+                    <div class="col-md-10" v-for="blog in blogs">
                         <div class="card products">
                         <img :src="'img/' + blog.image" class="card-img-top image" alt="...">
                             <div class="card-body">                   
