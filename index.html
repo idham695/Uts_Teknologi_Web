@@ -41,23 +41,23 @@
     <script src="lib/vue-router.js"></script>
     <script type="module">
         import HomeComponent from './pages/HomeComponent.js';
-        import ProductsComponent from './pages/ProductsComponent.js';
         import ProductComponent from './pages/ProductComponent.js';
-        import BrandsComponent from './pages/BrandsComponent.js';
+        import DetailProductComponent from './pages/DetailProductComponent.js';
         import BrandComponent from './pages/BrandComponent.js';
-        import BlogsComponent from './pages/BlogsComponent.js';
+        import DetailBrandComponent from './pages/DetailBrandComponent.js';
         import BlogComponent from './pages/BlogComponent.js';
+        import DetailBlogComponent from './pages/DetailBlogComponent.js';
         import PembayaranComponent from './pages/PembayaranComponent.js';
        
 
         const routes = [
           {path: '/', component:HomeComponent},
-          {path: '/brands', component: BrandsComponent},
-          {path: '/brands/:id', component: BrandComponent},
-          {path: '/blogs', component: BlogsComponent},
-          {path: '/blogs/:id', component: BlogComponent},
-          {path: '/products', component: ProductsComponent},
-          {path: '/products/:id', component: ProductComponent},
+          {path: '/brands', component: BrandComponent},
+          {path: '/brands/:id', component: DetailBrandComponent},
+          {path: '/blogs', component: BlogComponent},
+          {path: '/blogs/:id', component: DetailBlogComponent},
+          {path: '/products', component: ProductComponent},
+          {path: '/products/:id', component: DetailProductComponent},
           {path: '/pembayaran/:id', component: PembayaranComponent},  
            
         ]
